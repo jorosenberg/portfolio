@@ -1,0 +1,15 @@
+# Cloudflare Worker (static assets) - portfolio (jonahrosenberg.work)
+# No build step; deploy:  npx wrangler deploy
+name = "portfolio"
+main = "worker.js"
+compatibility_date = "2026-07-01"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+
+# D1 replaces DynamoDB (atomic friend counter). Bound automatically on deploy.
+[[d1_databases]]
+binding = "DB"
+database_name = "site_counters"
+database_id = "85c7e231-2223-46df-9adc-d376c62fdb4f"
