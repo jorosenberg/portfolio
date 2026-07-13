@@ -1,0 +1,17 @@
+# Mirrors the CloudFront response-headers policy + S3 cache-control 1:1
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# HTML never cached (browsers always get latest), assets immutable
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+/media/*
+  Cache-Control: public, max-age=31536000, immutable
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+/*.js
+  Cache-Control: public, max-age=31536000, immutable

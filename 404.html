@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Page Not Found</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Schibsted Grotesk"', 'sans-serif'],
+                        mono: ['monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#191CEB',
+                            light: '#8b5cf6',
+                            secondary: '#FACC15',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #191CEB;
+            color: white;
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #191CEB;
+            border-color: white;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-pink-500 selection:text-white min-h-screen">
+
+    <header class="fixed top-0 left-0 p-8 z-50 w-full flex justify-between items-start pointer-events-none">
+        <div
+            class="pointer-events-auto transition-all duration-500 ease-in-out origin-top-left flex items-center gap-4">
+            <div class="flex flex-col">
+                <h1 class="text-3xl font-medium tracking-tight leading-9">Jonah Rosenberg</h1>
+                <p class="text-lg font-normal opacity-90 leading-7">DevOps / Software Engineer</p>
+            </div>
+            <img src="media/quicklog.png" alt="Logo" class="h-20 w-auto object-contain opacity-90 top-1 relative">
+        </div>
+
+        <nav class="pointer-events-auto flex gap-6 mt-2">
+            <a href="portfolio.html" class="text-white/80 hover:text-white hover:underline transition-all">Portfolio</a>
+            <a href="resume.html" class="text-white/80 hover:text-white hover:underline transition-all">Resume</a>
+        </nav>
+    </header>
+
+    <main class="flex flex-col justify-center items-center text-center min-h-screen px-4">
+        <div class="max-w-2xl animate-fade-in">
+            <h2 class="text-8xl md:text-[12rem] font-bold mb-4 tracking-tighter opacity-20">404</h2>
+            <h3 class="text-3xl md:text-5xl font-normal mb-8 tracking-tight">Lost in the stack.</h3>
+            <p class="text-lg md:text-xl opacity-70 mb-12 max-w-md mx-auto leading-relaxed">
+                The page you're looking for has been moved, deleted, or never existed in the first place.
+            </p>
+
+            <div class="flex justify-center">
+                <a href="portfolio.html" class="btn-outline rounded-full px-10 py-4 text-xl font-medium tracking-wide">
+                    Return Home
+                </a>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,336 @@
+body {
+    /* Static Background */
+    background-color: #191CEB;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Custom scrollbar for ascii box */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.btn-outline {
+    border: 2px solid white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline:hover {
+    background-color: white;
+    color: #191CEB;
+}
+
+.ascii-art {
+    font-family: 'Courier New', monospace;
+    line-height: 1;
+    /* Ensure tight line height for block scaling */
+    font-size: 5px;
+    /* Fixed font size, scaling handles the rest */
+    white-space: pre;
+    /* Removed overflow: hidden to allow true scrollWidth measurement */
+    transform-origin: 50% 50%;
+    /* Default center, updated by Pan sliders */
+    display: inline-block;
+    /* Allows element to report true width for scaling math */
+    margin: 0;
+    padding: 0;
+    transition: text-shadow 0.3s ease;
+}
+
+/* Smooth layout transitions */
+.layout-transition {
+    transition-property: width, height, max-height, opacity, margin, transform, flex-grow, grid-template-rows;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 1200ms;
+}
+
+.page-section {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 100px;
+    /* Space for fixed header */
+    padding-bottom: 40px;
+}
+
+.page-section.active {
+    display: flex;
+    /* Animation handled via JS classes now to prevent conflicts */
+}
+
+/* Control buttons hover states */
+.control-btn {
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.control-btn:hover {
+    opacity: 1;
+}
+
+/* Range Slider Styling */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Webkit (Chrome, Safari) */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: -6px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    border: none;
+}
+
+/* Firefox */
+input[type=range]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+input[type=range]::-moz-range-track {
+    background: transparent;
+    border: none;
+}
+
+input[type=range]::-moz-range-progress {
+    background: rgba(255, 255, 255, 0.3);
+    height: 4px;
+    border-radius: 2px;
+}
+
+/* ============================================================= */
+/* FIXED BOTTOM-LEFT PROJECT PANEL                                */
+/* ============================================================= */
+
+/* Scroll container: thin custom scrollbar */
+.project-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: auto;
+    /* Soft fade at the very top/bottom so cards feel like they scroll under the frame */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%);
+}
+
+.project-scroll::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.project-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.project-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.project-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.55);
+}
+
+/* The large preview cards */
+.project-card-new {
+    position: relative;
+    display: block;
+    height: 440px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.project-card-new:hover,
+.project-card-new:focus-visible {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* The looping video / gif / image fills the card */
+.project-card-new .card-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.12s ease;
+}
+
+.project-card-new:hover .card-media,
+.project-card-new:focus-visible .card-media {
+    filter: brightness(0.4);
+}
+
+/* Bottom gradient so the resting title is always legible */
+.project-card-new .card-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.05) 45%, transparent 70%);
+    transition: opacity 0.12s ease;
+}
+
+.project-card-new:hover .card-fade,
+.project-card-new:focus-visible .card-fade {
+    opacity: 0;
+}
+
+/* Resting title (bottom-left) */
+.project-card-new .card-title {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 1.4rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    transition: opacity 0.1s ease;
+    z-index: 2;
+}
+
+.project-card-new:hover .card-title,
+.project-card-new:focus-visible .card-title {
+    opacity: 0;
+}
+
+/* "Headline" badge */
+.project-card-new .card-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.85rem;
+    z-index: 3;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.55rem;
+    border-radius: 9999px;
+    background: #ffffff;
+    color: #191CEB;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    transition: opacity 0.1s ease;
+}
+
+.project-card-new:hover .card-badge,
+.project-card-new:focus-visible .card-badge {
+    opacity: 0;
+}
+
+/* Hover overlay holding detail text + links */
+.project-card-new .card-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.12s ease;
+}
+
+.project-card-new:hover .card-overlay,
+.project-card-new:focus-within .card-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Link row inside the overlay */
+.project-card-new .card-links {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+}
+
+.project-card-new .card-btn-primary {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    color: #191CEB;
+    transition: background 0.12s ease;
+}
+
+.project-card-new .card-btn-primary:hover {
+    background: #fff;
+}
+
+.project-card-new .card-btn-ghost {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    transition: background 0.12s ease;
+}
+
+.project-card-new .card-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Tuck the panel into the flow on small screens where it would cover the app */
+@media (max-width: 1023px) {
+    #project-panel {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+        margin: 2.5rem 0 1rem;
+    }
+    .project-scroll {
+        height: 380px;
+    }
+}
+
+/* ----- Bigger cards, no box, no scrollbar, hover fade (revision) ----- */
+.project-card-new .card-overlay {
+    padding: 1.6rem 1.75rem;
+    justify-content: flex-end;
+}
+.project-card-new .card-overlay h5 { font-size: 1.75rem; line-height: 1.1; }
+.project-card-new .card-overlay p { font-size: 1rem; line-height: 1.5; margin-top: 0.6rem; text-shadow: 0 1px 10px rgba(0,0,0,0.85); }
+.project-card-new .card-overlay .card-links { margin-top: 1.4rem; gap: 0.75rem; }
+.project-card-new .card-btn-primary,
+.project-card-new .card-btn-ghost { font-size: 14px; padding: 0.75rem 1rem; border-radius: 0.7rem; }
+.project-card-new .card-badge { font-size: 12px; padding: 0.35rem 0.75rem; top: 1rem; left: 1.1rem; }

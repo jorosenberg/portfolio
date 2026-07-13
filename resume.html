@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonah Rosenberg | Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="media/quicklog.png">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Schibsted Grotesk"', 'sans-serif'],
+                        mono: ['monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#4c1d95', // Violet 900 base
+                            light: '#8b5cf6', // Violet 500
+                            secondary: '#FACC15', // Vibrant Sunny Yellow
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'fade-out': 'fadeOut 0.5s ease-in forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeOut: {
+                            '0%': { opacity: '1', transform: 'translateY(0)' },
+                            '100%': { opacity: '0', transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans antialiased selection:bg-pink-500 selection:text-white">
+
+    <!-- Persistent Header -->
+    <header id="main-header" class="fixed top-0 left-0 p-8 z-50 w-full flex justify-between items-start pointer-events-none">
+        <div id="header-name" class="pointer-events-auto transition-all duration-500 ease-in-out origin-top-left flex items-center gap-4">
+            <div class="flex flex-col">
+                <h1 class="text-3xl font-medium tracking-tight leading-9">Jonah Rosenberg</h1>
+                <p class="text-lg font-normal opacity-90 leading-7">DevOps / Software Engineer</p>
+            </div>
+            <!-- Logo: h-16 (64px) matches the combined line-heights of title (36px) and subtitle (28px) -->
+            <img src="media/quicklog.png" alt="Logo" class="h-20 w-auto object-contain opacity-90 top-1 relative">
+        </div>        <!-- Social Links -->
+        <div class="pointer-events-auto flex gap-6 mt-2">
+            <a href="https://github.com/jorosenberg" target="_blank" class="opacity-70 hover:opacity-100 transition-opacity">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://linkedin.com/in/jonah-rosenberg-profile" target="_blank" class="opacity-70 hover:opacity-100 transition-opacity">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2h-4v9h-4v-18h4v3a6 6 0 0 1 5.5-3z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+
+        <!-- Navigation Links -->
+        <nav class="pointer-events-auto flex gap-6">
+            <a href="port1.html" class="text-white/80 hover:text-white hover:underline transition-all">Home</a>
+            <a href="portfolio.html" class="text-white/80 hover:text-white hover:underline transition-all">Portfolio</a>
+        </nav>
+    </header>
+
+    <!-- RESUME SECTION -->
+    <section class="min-h-screen flex-col px-8 md:px-16 items-center justify-center pt-32 pb-32">
+        <div class="max-w-4xl w-full mb-12 mx-auto">
+
+            <div class="flex justify-between items-end mb-12 border-b border-white/30 pb-6">
+                <div>
+                    <h2 class="text-4xl font-medium mb-2">Jonah Rosenberg</h2>
+                    <p class="text-xl opacity-80 font-light">DevOps / Software Engineer</p>
+                </div>
+                <div class="text-right hidden sm:block font-light">
+                    <p>jrosenberg272@gmail.com</p>
+                    <p>NYC</p>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="mb-10 border-b border-white/20 pb-10">
+                <h3 class="text-2xl font-medium mb-4">Technical Skills</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg font-light">
+                    <ul class="list-disc list-inside space-y-1 opacity-90">
+                        <li><strong class="font-medium text-brand-secondary">Languages:</strong> Python, HCL, Java, Golang, JavaScript, SQL</li>
+                        <li><strong class="font-medium text-brand-secondary">Frameworks & Libraries:</strong> boto3, nginx, pandas, numpy, scikit-learn, flask </li>
+                    </ul>
+                    <ul class="list-disc list-inside space-y-1 opacity-90">
+                        <li><strong class="font-medium text-brand-secondary">Platforms:</strong> AWS, Linux Systems Administration, Windows, Serverless Architecture (AWS Lambda), Networking & Security (VPC, ELB, IAM)</li>
+                        <li><strong class="font-medium text-brand-secondary">Tools:</strong> Terraform, Git, Agentic AI, Docker, CI/CD (GitLab Pipelines, GitHub Actions), DataDog </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="mb-10 border-b border-white/20 pb-10">
+                <h3 class="text-2xl font-medium mb-6">Experience</h3>
+
+                <div class="mb-6">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                        <h4 class="text-xl font-medium text-brand-secondary">Junior DevOps Engineer</h4>
+                        <span class="opacity-70 font-light">Togetherwork <i>Remote</i> | 2022-2025 </span>
+                    </div>
+                    <ul class="list-disc list-inside opacity-90 space-y-2 font-light">
+                        <li>Architected and developed scalable infrastructure systems using reusable Terraform modules, standardizing cloud
+                        deployments while driving cost reduction, performance optimization, and improved reliability across AWS
+                        environments by at least twofold.</li>
+                        <li>Developed a Terraform module alone to automate data masking by orchestrating AWS Step Functions with multiple
+                        Python Lambda functions, enabling 100% robust, secure replication and sanitization of production databases for lower
+                        environments. Leveraged AI to greatly increase development speed by 100%.</li>
+                        <li>Automated security and compliance workflows by integrating AWS Patch Manager via SSM with Terraform, ensuring
+                        100% compliant, consistent patch deployment and reducing 25+ hours of monthly operational overhead for 50+ instances per account.</li>
+                        <li>Designed and deployed a standardized monitoring system for Stripe transaction activity to detect and prevent fraud
+                        and carding attacks, implemented through a Terraform module to ensure consistent coverage across multiple
+                        organizations giving the company back 80% of time lost and at the same time driving down money lost by 50%.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                        <h4 class="text-xl font-medium text-brand-secondary">Intern DevOps Engineer</h4>
+                        <span class="opacity-70 font-light">Togetherwork <i>Remote</i> | Feb 2022 - Aug 2022</span>
+                    </div>
+                    <ul class="list-disc list-inside opacity-90 space-y-2 font-light">
+                        <li>Developed and standardized observability practices across multiple organizations by configuring Datadog metrics,
+                        logs, and APM dashboards, improving system visibility and reducing incident response time up to 90%.</li>
+                        <li>Implemented infrastructure automation using SaltStack (SaltState) to deploy and configure services consistently
+                        across environments, enhancing scalability and reducing manual setup time.</li>
+                        <li>Defined monitoring and alerting standards for different organizational units, ensuring uniform performance tracking
+                        and operational reliability across distributed systems.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Projects -->
+            <div class="mb-10 border-b border-white/20 pb-10">
+                <h3 class="text-2xl font-medium mb-6">Selected Works</h3>
+
+                <a href="https://github.com/jorosenberg/evsense" target="_blank" rel="noopener noreferrer">
+                    <div class="mb-10 bg-gray-900/40 border border-white/10 p-6 rounded-xl hover:scale-105 hover:bg-gray-800/60 transition-all duration-300 shadow-lg">
+                        <h4 class="text-2xl font-medium text-brand-secondary">EVsense, EV Cost of Ownership Calculator and Match Engine</h4>
+                        <ul class="list-disc list-inside opacity-90 mt-3 space-y-2 text-base font-light leading-relaxed">
+                            <li>Engineered an explainable scoring engine to replace a black box k nearest neighbors recommender, giving each factor its own calibrated score, including total cost of ownership, efficiency in cents per mile, range measured against real driving need with headroom, and budget fit, then weighting those scores by the priorities a user selects to rank the best matches and explain the reason behind every pick.</li>
+                            <li>Built a cost model that runs entirely in the browser and calculates a true monthly cost from lease and finance math, state electricity rates and fees, federal and state incentives, projected depreciation, maintenance, and insurance, recomputing instantly on every change a user makes without a single backend call.</li>
+                            <li>Architected a fully static system where a local data pipeline gathers public data into versioned JSON that ships with a React build and serves from a CDN, keeping the app fast, auditable, and extremely cheap to run.</li>
+                        </ul>
+                    </div>
+                </a>
+                <a href="https://github.com/jorosenberg/joblink" target="_blank" rel="noopener noreferrer">
+                    <div class="mb-10 bg-gray-900/40 border border-white/10 p-6 rounded-xl hover:scale-105 hover:bg-gray-800/60 transition-all duration-300 shadow-lg">
+                        <h4 class="text-2xl font-medium text-brand-secondary">Job Scraper and AI analyzer</h4>
+                        <p class="opacity-90 mt-2 text-lg font-light leading-relaxed">
+                            Fully Architectured web application that scrapes job listings from user defined websites, and uses AI to analyze job descriptions, extracting key information and providing job similarity scores to help users find the best job matches based on their preferences and qualifications.
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Education -->
+            <div class="mb-4">
+                <h3 class="text-2xl font-medium mb-4">Education</h3>
+                <div class="flex flex-col sm:flex-row justify-between sm:items-baseline">
+                    <h4 class="text-xl font-medium text-brand-secondary">Some College</h4>
+                    <span class="opacity-70 font-light">Rochester Institute of Technology | Aug 2020 - Dec 2021</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Navigation Buttons -->
+    <div class="fixed bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col gap-4 items-center">
+        <!-- CV Download Button - Circular -->
+        <button onclick="window.open('media/jonahrosenbergcv.pdf', '_blank')" class="w-16 h-16 rounded-full bg-brand-secondary text-[#4c1d95] font-bold hover:scale-110 transition-all shadow-lg hover:shadow-xl flex items-center justify-center" title="Download CV">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </button>
+        <!-- Back to Portfolio Link -->
+        <a href="portfolio.html" class="text-white/80 hover:text-white text-sm opacity-60 hover:opacity-100 transition-all">Back to Portfolio</a>
+    </div>
+
+    <script>
+        const header = document.getElementById('main-header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling DOWN: Hide the header
+                header.style.transform = 'translateY(-20px)';
+                header.style.opacity = '.4';
+                header.style.pointerEvents = 'none';
+            } else {
+                // Scrolling UP: Show the header
+                header.style.transform = 'translateY(0)';
+                header.style.opacity = '1';
+                header.style.pointerEvents = 'auto';
+            }
+
+            // Update lastScrollY for the next event
+            lastScrollY = currentScrollY;
+        });
+    </script>
+</body>
+</html>
