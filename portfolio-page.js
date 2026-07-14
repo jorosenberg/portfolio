@@ -76,6 +76,10 @@ function runPortfolioIntro() {
                 // After layout transition completes, fade in text/controls
                 setTimeout(() => {
                     leftCol.classList.remove('opacity-0');
+                    // Fade the projects panel in together with the About Me text,
+                    // now that the video-to-ASCII intro animation has finished.
+                    const projectPanel = document.getElementById('project-panel');
+                    if (projectPanel) projectPanel.style.opacity = '1';
                     setTimeout(() => {
                         [titleContainer, uploadContainer, controls].forEach(el => {
                             if (el) el.classList.remove('opacity-0');
@@ -126,6 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!localStorage.getItem('hasPlayedIntro')) {
         localStorage.setItem('hasPlayedIntro', 'true');
         runPortfolioIntro();
+    } else {
+        // Return visit: the intro doesn't replay, so reveal the projects
+        // panel immediately (no fade) instead of leaving it hidden.
+        const projectPanel = document.getElementById('project-panel');
+        if (projectPanel) {
+            projectPanel.style.transition = 'none';
+            projectPanel.style.opacity = '1';
+        }
     }
 
     // Edge auto-scroll for the bottom-left project panel.
